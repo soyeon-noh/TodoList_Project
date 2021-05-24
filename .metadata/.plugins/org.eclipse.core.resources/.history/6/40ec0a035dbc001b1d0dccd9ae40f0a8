@@ -1,0 +1,9 @@
+package com.callor.todo.controller;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+
+@WebServlet("/todo")
+public class TodoListController extends HttpServlet{
+
+}

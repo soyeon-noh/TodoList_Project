@@ -1,0 +1,5 @@
+package com.callor.todo.service.impl;
+
+public class TodoServiceImplV1 {
+
+}

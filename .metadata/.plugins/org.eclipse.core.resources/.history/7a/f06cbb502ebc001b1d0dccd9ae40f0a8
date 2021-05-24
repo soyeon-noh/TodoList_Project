@@ -1,0 +1,10 @@
+package com.callor.todo.model;
+
+public class TodoListVO {
+
+	private Long td_seq;	//BIGINT
+    private String td_date;	//VARCHAR(20)
+    private String td_time;	//VARCHAR(20)
+	private String td_todo;	//VARCHAR(200)
+    private String td_place;	//VARCHAR(125)
+}

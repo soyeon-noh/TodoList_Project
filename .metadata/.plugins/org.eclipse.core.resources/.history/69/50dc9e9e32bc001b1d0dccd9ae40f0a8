@@ -1,0 +1,5 @@
+package com.callor.todo.config;
+
+public class DbInfo {
+
+}

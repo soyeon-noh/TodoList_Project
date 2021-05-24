@@ -1,0 +1,20 @@
+package com.callor.todo.controller;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class RequestController extends HttpServlet{
+	
+	public static void reqController (HttpServletRequest req, 
+			HttpServletResponse resp, String file) {
+		
+		String root = "/WEB-INF/views/" + file + ".jsp";
+		
+		req.getRequestDispatcher(root)
+		.forward(req, resp);
+		
+		
+	}
+
+}

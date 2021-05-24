@@ -1,0 +1,83 @@
+package com.callor.todo.service.impl;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.callor.todo.config.DbInfo;
+import com.callor.todo.model.TodoListVO;
+import com.callor.todo.service.TodoService;
+
+public class TodoServiceImplV1 implements TodoService{
+
+	protected List<TodoListVO> select(PreparedStatement pStr) throws SQLException{
+		// TODO DB로부터 데이터를 받아와 List에 저장
+		List<TodoListVO> tdList = new ArrayList<TodoListVO>();
+		
+		ResultSet rSet = pStr.executeQuery();
+		while(rSet.next()) {
+			TodoListVO tdVO = new TodoListVO();
+			tdVO.setTd_seq(rSet.getLong(DbInfo.td_seq));
+			tdVO.setTd_date(rSet.getString(DbInfo.td_date));
+			tdVO.setTd_time(rSet.getString(DbInfo.td_time));
+			tdVO.setTd_todo(rSet.getString(DbInfo.td_todo));
+			tdVO.setTd_place(rSet.getString(DbInfo.td_place));
+			
+		}
+		
+		// 데이터 확인
+		System.out.println("select : " + tdList.toString());
+		return tdList;
+	}
+	
+	@Override
+	public List<TodoListVO> selectAll() {
+		// TODO TODOList 전체 데이터 조회
+		return null;
+	}
+
+	@Override
+	public TodoListVO findById(Long seq) {
+		// TODO 일련번호로 조회
+		return null;
+	}
+
+	@Override
+	public List<TodoListVO> findByDate(String td_date) {
+		// TODO 날짜로 조회
+		return null;
+	}
+
+	@Override
+	public List<TodoListVO> findByTodo(String td_todo) {
+		// TODO 할일내용으로 조회
+		return null;
+	}
+
+	@Override
+	public List<TodoListVO> findByPlace(String td_place) {
+		// TODO 장소로 조회
+		return null;
+	}
+
+	@Override
+	public Integer insert(TodoListVO tdVO) {
+		// TODO 데이터 추가
+		return null;
+	}
+
+	@Override
+	public Integer update(TodoListVO tdVO) {
+		// TODO 데이터 업데이트
+		return null;
+	}
+
+	@Override
+	public Integer delete(Long seq) {
+		// TODO 데이터 삭제
+		return null;
+	}
+
+}
