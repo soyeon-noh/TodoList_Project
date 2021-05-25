@@ -8,26 +8,58 @@
 		box-sizing: border-box;
 	}
 	
+	
+	div#date{
+		background-color: rgba(153, 131, 250, 20);
+		text-align: center;
+	}
+	
+	
     h1.clock {
+    	display: inline-block;
+    	
         color: black;
         text-align: center;
-        background-color: rgba(153, 131, 250, 20);
-        padding: 2rem;
+        padding: 1rem;
+		
+    }
+    
+    h1.date {
+    	display: inline-block;
+    	
+     	color: black;
+        text-align: center;
+		padding: 1rem;
     }
 
 </style>
 <h1>TO DO List</h1>
-<h2 class="date"></h2>
-<h1 class="clock"></h1>
-
+<div id="date">
+	<h1 class="date"></h1>
+	<h1 class="clock"></h1>
+</div>
 <script>
+	function checkTime(i){
+		if(i< 10){
+			i = "0" + i;
+		}
+		return i;
+	}
+
 	let date = document.querySelector(".date");
 	
     function getDate(){
         const time = new Date();
-        const year = time.getUTCFullYear();
-        const month = time.getUTCMonth();
-        const day = time.getUTCDay();
+        let year = time.getUTCFullYear();
+        let month = time.getUTCMonth();
+        let day = time.getUTCDay();
+        
+        alert(time);
+        
+        year = checkTime(year);
+        month = checkTime(month);
+        day = checkTime(day);
+        
         date.textContent = year + "-" + month + "-" + day;
     }
 
@@ -35,16 +67,8 @@
 
 	let clock = document.querySelector(".clock");
 	
-
-	function checkTime(i){
-		if(i< 10){
-			i = "0" + i;
-		}
-		return i;
-	}
 	
 	function getTime() {
-		
 		  const time = new Date();
 		  let hour = time.getHours();
 		  let minutes = time.getMinutes();
@@ -62,6 +86,7 @@
 	
 	function init() {
 	  setInterval(getTime, 1000);
+	  setInterval(getDate, 1000);
 	}
 	
 	init();

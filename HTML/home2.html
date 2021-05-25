@@ -17,10 +17,14 @@
 
     function getDate() {
       const time = new Date();
-      const year = time.getUTCFullYear();
-      const month = time.getUTCMonth();
-      const day = time.getUTCDay();
-      alert(year, month, day);
+      let year = time.getUTCFullYear();
+      let month = time.getUTCMonth();
+      let day = time.getUTCDay();
+
+      year = checkTime(year);
+      month = checkTime(month);
+      day = checkTime(day);
+
       date.textContent = year + "-" + month + "-" + day;
     }
 
@@ -47,7 +51,7 @@
 
     function init() {
       setInterval(getTime, 1000);
-      setInterval(getDate, 86400000);
+      setInterval(getDate, 1000);
     }
 
     init();
