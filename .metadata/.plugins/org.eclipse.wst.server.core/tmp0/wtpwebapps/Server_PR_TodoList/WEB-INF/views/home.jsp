@@ -8,17 +8,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link href="${rootPath}/static/css/home.css?ver1" rel="stylesheet"/>
+<title>TODOList 메인화면</title>
+<link href="${rootPath}/static/css/home.css?ver4" rel="stylesheet"/>
 
 <style>
 
-
 </style>
-
-<script>
-
-</script>
 
 
 </head>
@@ -38,7 +33,7 @@
     	</div>
     	
     	<div>
-    		<label for="todo">할일</label>
+    		<label for="todo">할 일</label>
     		<input name="td_todo"
     				type="text" value="${TD.td_todo}">
     	</div>
@@ -48,13 +43,22 @@
     		<input name="td_place"
     				type="text" value="${TD.td_place}">
     	</div>
-   		<button class="btn_insert">추가</button>
+    	<div>
+   			<button class="btn_insert" type="button">추가</button>
+		</div>
+    </form>
+    
+    <form class="select" method="GET">
+    	<input name="select_date" type="date">
+    	<button class="btn_select" type="button">
+    		검색
+    	</button>
     </form>
     
     <table id="tdlist">
       <tr>
         <th>No.</th>
-        <th>할일</th>
+        <th>할 일</th>
         <th>작성일자</th>
         <th>장소</th>
         <th></th>
@@ -65,9 +69,92 @@
           <td>${TD.td_todo}</td>
           <td>${TD.td_date}</td>
           <td>${TD.td_place}</td>
-          <th><button class="btn_delete">삭제</button></th>
+          <td><button class="btn_update" data-seq="${TD.td_seq}" type="button">
+          		수정</button>
+          		<button class="btn_delete" data-seq="${TD.td_seq}" type="button">
+          		삭제</button></td>
         </tr>
       </c:forEach>
     </table>
   </body>
+  
+  <script>
+  // html 코드가 다 화면에 뜨고 나서 실행하라는 명렁
+  // 아래 한 줄의 코드가 있어야 어디든디 script를 넣을 수 있다.
+	document.addEventListener("DOMContentLoaded",function(){
+		
+		document.querySelector("form.v1")
+		.addEventListener("click", function(ev){
+			let className = ev.target.className
+			
+			if(className == "btn_insert"){
+				let td_todo = document.querySelector("input[name='td_todo']");
+				if(td_todo.value == ""){
+					alert("할 일은 반드시 입력해야합니다");
+					td_todo.focus();
+					return false;
+				}
+				
+				document.querySelector("form.v1").submit();
+			}
+		})
+		
+		document.querySelector("form.select")
+		.addEventListener("click", function(ev){
+			let className = ev.target.className
+			
+			
+			if(className == "btn_select"){
+				let date = document.querySelector("input[name='select_date']")
+				.value;
+				
+				if(date == ""){
+					document
+					.location
+					.href= "${rootPath}";
+					
+					return false;
+				}
+
+				document
+				.location
+				.href= "${rootPath}" 
+						+ "/UD/select?td_date="
+						+ date;
+			}
+			
+		})
+		
+		document.querySelector("table#tdlist")
+		.addEventListener("click", function(ev){
+			let className = ev.target.className
+			
+
+				
+			if(className == "btn_delete"){
+
+				let seq = ev.target.dataset.seq
+				alert("삭제가 완료되었습니다." + seq );
+					
+				document
+				.location
+				.replace( "${rootPath}" 
+						+ "/UD/delete?td_seq="
+						+ seq )
+			
+			} else if(className == "btn_update"){
+				
+				let seq = ev.target.dataset.seq;
+				
+				document
+				.location
+				.href= "${rootPath}" +
+						"/UD/update?td_seq="
+						+ seq
+			}
+			
+		})
+	})
+  </script>
+
 </html>

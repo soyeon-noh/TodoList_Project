@@ -7,7 +7,7 @@
 		padding: 0;
 		box-sizing: border-box;
 	}
-
+	
     h1.clock {
         color: black;
         text-align: center;
@@ -19,26 +19,46 @@
 <h1>TO DO List</h1>
 <h2 class="date"></h2>
 <h1 class="clock"></h1>
+
 <script>
 	let date = document.querySelector(".date");
 	
-	function getDate(){
-		
-	}
+    function getDate(){
+        const time = new Date();
+        const year = time.getUTCFullYear();
+        const month = time.getUTCMonth();
+        const day = time.getUTCDay();
+        date.textContent = year + "-" + month + "-" + day;
+    }
 
 
 
 	let clock = document.querySelector(".clock");
 	
-	function getTime() {
-	  const time = new Date();
-	  const hour = time.getHours();
-	  const minutes = time.getMinutes();
-	  const seconds = time.getSeconds();
-	  clock.textContent = hour + ":" + minutes + ":" + seconds;
-	
 
+	function checkTime(i){
+		if(i< 10){
+			i = "0" + i;
+		}
+		return i;
 	}
+	
+	function getTime() {
+		
+		  const time = new Date();
+		  let hour = time.getHours();
+		  let minutes = time.getMinutes();
+		  let seconds = time.getSeconds();
+		  
+		  hour = checkTime(hour);
+		  minutes = checkTime(minutes);
+		  seconds = checkTime(seconds);
+		  
+		  clock.textContent = hour + ":" + minutes + ":" + seconds;
+		
+	}
+	
+	
 	
 	function init() {
 	  setInterval(getTime, 1000);

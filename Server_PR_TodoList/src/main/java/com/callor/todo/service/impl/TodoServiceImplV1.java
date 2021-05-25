@@ -68,6 +68,28 @@ public class TodoServiceImplV1 implements TodoService{
 	@Override
 	public TodoListVO findById(Long seq) {
 		// TODO 일련번호로 조회
+		String sql = " SELECT * FROM tbl_todo_list ";
+		sql += " WHERE td_seq = ? ";
+		
+		PreparedStatement pStr = null;
+		
+		try {
+			pStr = dbConn.prepareStatement(sql);
+			pStr.setLong(1, seq);
+			
+			List<TodoListVO> tdList = this.select(pStr);
+			
+			pStr.close();
+			
+			if(tdList != null && tdList.size() > 0) {
+				return tdList.get(0);	
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
 
@@ -95,17 +117,6 @@ public class TodoServiceImplV1 implements TodoService{
 		return null;
 	}
 
-	@Override
-	public List<TodoListVO> findByTodo(String td_todo) {
-		// TODO 할일내용으로 조회
-		return null;
-	}
-
-	@Override
-	public List<TodoListVO> findByPlace(String td_place) {
-		// TODO 장소로 조회
-		return null;
-	}
 
 	@Override
 	public Integer insert(TodoListVO tdVO) {

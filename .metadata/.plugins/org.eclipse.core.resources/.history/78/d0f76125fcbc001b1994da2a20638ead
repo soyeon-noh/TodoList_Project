@@ -1,0 +1,78 @@
+package com.callor.todo.controller;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.callor.todo.model.TodoListVO;
+import com.callor.todo.service.TodoService;
+import com.callor.todo.service.impl.TodoServiceImplV1;
+
+
+@WebServlet("/UD/*")
+public class TodoListController extends HttpServlet{
+
+	protected TodoService tdService;
+	
+	public TodoListController() {
+		tdService = new TodoServiceImplV1();
+	}
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String subPath = req.getPathInfo();
+		if(subPath.equals("/delete")) {
+			String strSeq = req.getParameter("td_seq");
+			Long td_seq = Long.valueOf(strSeq);
+			tdService.delete(td_seq);
+			resp.sendRedirect("/todo");
+			
+		} else if(subPath.equals("/update")) {
+			// TODO update 실행하기 전 화면 보여주기
+			String strSeq = req.getParameter("td_seq");
+			Long td_seq = Long.valueOf(strSeq);
+			
+			TodoListVO tdVO = tdService.findById(td_seq);
+			req.setAttribute("TD", tdVO);
+			
+			RequestController.reqController(req, resp, "update");
+			
+		}
+	
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO insert()
+		
+		// 한글 인코딩 세팅
+		req.setCharacterEncoding("UTF-8");
+
+		// subPath 가져오기
+		String subPath = req.getPathInfo();
+		
+		// 사용자가 화면에 입력한 값 가져오기
+		String gb_date = req.getParameter("td_date");
+		String gb_time = req.getParameter("td_time");
+		String gb_todo = req.getParameter("td_todo");
+		String gb_place = req.getParameter("td_place");
+
+		TodoListVO tdVO = new TodoListVO();
+		tdVO.setTd_date(gb_date);
+		tdVO.setTd_time(gb_time);
+		tdVO.setTd_todo(gb_todo);
+		tdVO.setTd_place(gb_place);
+		
+		
+
+		if(subPath.equals("/update")) {
+			String strSeq = req.getParameter("td_seq");
+		}
+	}
+	
+	
+}

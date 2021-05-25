@@ -21,7 +21,7 @@
       }
 
       h1.main {
-        color: white;
+        color: rgb(250, 131, 141)
         text-align: center;
         background-color: rgba(153, 131, 250, 30);
         padding: 2rem;
@@ -34,21 +34,28 @@
 
   <script>
     let clock = document.querySelector(".clock");
+    let date = document.querySelector(".date");
+
+    function getDate() {
+      const time = new Date();
+      const year = time.getUTCFullYear();
+      const month = time.getUTCMonth();
+      const day = time.getUTCDay();
+    }
 
     function getTime() {
-      const time = new Date();
       const hour = time.getHours();
       const minutes = time.getMinutes();
       const seconds = time.getSeconds();
-      clock.innerHTML = hour + ":" + minutes + ":" + seconds;
-      //   clock.innerHTML =
-      //     hour < 10
-      //       ? `0${hour}`
-      //       : hour + ":" + minutes < 10
-      //       ? `0${minutes}`
-      //       : minutes + ":" + seconds < 10
-      //       ? `0${seconds}`
-      //       : seconds;
+      //   clock.innerHTML = hour + ":" + minutes + ":" + seconds;
+      clock.innerHTML =
+        hour < 10
+          ? `0${hour}`
+          : hour + ":" + minutes < 10
+          ? `0${minutes}`
+          : minutes + ":" + seconds < 10
+          ? `0${seconds}`
+          : seconds;
     }
 
     function init() {
@@ -56,3 +63,7 @@
     }
   </script>
 </html>
+
+let tagName = ev.target.tagName let className = ev.target.className if(className
+== "btn_delete"){ if(tagName == "BUTTON") { let seq = ev.target.dataset.seq
+alert("삭제하기" + tagName + seq + className); } } rgba(153,131,250,1)

@@ -1,0 +1,71 @@
+@charset "UTF-8";
+
+/* 여백 초기화 */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+h1 {
+	color: white;
+	text-align: center;
+	background-color: rgba(153,131,250,1); 
+	padding: 2rem;
+	
+}
+
+form.v1 {
+	background-color: rgba(153,131,250,0.2);
+	padding: 3rem 5rem 3rem 5rem;
+	margin: 10px auto;
+}
+
+form.v1 div {
+	text-align: center;
+	margin: 5px;
+}
+
+form.v1 div label{
+	display: inline-block;
+	
+	width: 150px;
+	text-align: right;
+}
+
+form.v1 input{
+	width: 200px;
+	border: 1px;
+	height: 1.2rem;
+	margin: 2px;
+}
+
+form.v1 div button{
+		outline: 0;
+		border: 0;
+		width: 100px;
+		color: white;
+		padding: 5px;
+		background-color: rgba(153,131,250,1);
+		border-radius: 8px;
+
+		
+}
+
+table {
+	border-collapse: collapse;
+	width: 80%;
+	margin: 10px auto;
+}
+
+td, th {
+	border-bottom: 1px solid #9882FA;
+	padding: 5px;
+	text-align: center;
+}
+
+th {
+	background-color: rgba(153,131,250,0.4);
+}
+
+
