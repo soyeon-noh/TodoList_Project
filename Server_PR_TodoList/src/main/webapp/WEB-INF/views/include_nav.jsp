@@ -51,16 +51,14 @@
     function getDate(){
         const time = new Date();
         let year = time.getUTCFullYear();
-        let month = time.getUTCMonth();
-        let day = time.getUTCDay();
-        
-        alert(time);
+        let month = time.getUTCMonth() + 1;
+        let date = time.getUTCDate();
         
         year = checkTime(year);
         month = checkTime(month);
-        day = checkTime(day);
+        date = checkTime(date);
         
-        date.textContent = year + "-" + month + "-" + day;
+        date.textContent = year + "-" + month + "-" + date;
     }
 
 

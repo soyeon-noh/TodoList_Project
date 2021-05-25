@@ -153,7 +153,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="C:\bizworks\todo_list\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\bizworks\todo_list\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Server_PR_TodoList" path="/todo" reloadable="true" source="org.eclipse.jst.jee.server:Server_PR_TodoList"/></Host>
+      <Context docBase="/Users/soyeonnoh/Desktop/2021_workspace/TodoList/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/ROOT" path="" reloadable="false"/><Context docBase="/Users/soyeonnoh/Desktop/2021_workspace/TodoList/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/Server_PR_TodoList" path="/todo" reloadable="true" source="org.eclipse.jst.jee.server:Server_PR_TodoList"/></Host>
     </Engine>
   </Service>
 </Server>

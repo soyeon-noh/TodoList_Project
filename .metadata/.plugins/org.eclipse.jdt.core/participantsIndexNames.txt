@@ -1,3 +1,5 @@
 INDEX VERSION 1.131
 C:\bizworks\todo_list\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1664766293.index
 \Server_PR_TodoList\src\main\java
+/Users/soyeonnoh/Desktop/2021_workspace/TodoList/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/3259750466.index
+/Server_PR_TodoList/src/main/java
