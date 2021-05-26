@@ -57,7 +57,8 @@
         
         year = checkTime(year);
         month = checkTime(month);
-        today = checkTime(day);
+        day = checkTime(day);
+
         
         date.textContent = year + "-" + month + "-" + day;
     }
